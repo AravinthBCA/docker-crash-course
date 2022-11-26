@@ -116,7 +116,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>in28min/${project.name}</repository>
+					<repository>aravinthkaliyamoorthy/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
@@ -124,7 +124,7 @@
 		</plugins>
 	</build>
 
-	<repositories>
+<!--<repositories>
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -138,6 +138,6 @@
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestones</url>
 		</pluginRepository>
-	</pluginRepositories>
+	</pluginRepositories> -->
 
 </project>
