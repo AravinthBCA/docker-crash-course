@@ -7,7 +7,7 @@
 	<groupId>com.in28minutes.springboot.web</groupId>
 	<artifactId>03-todo-web-application-mysql</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>todo-web-application-mysql</name>
 
 	<description>Demo project for Spring Boot</description>
@@ -85,13 +85,13 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> 
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
+		</dependency> 
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -129,7 +129,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<repository>in28min/${project.name}</repository>
+					<repository>aravinth/${project.name}</repository>
 					<tag>${project.version}</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
