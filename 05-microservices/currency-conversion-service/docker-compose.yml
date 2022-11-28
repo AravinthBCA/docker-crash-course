@@ -1,0 +1,53 @@
+version: '3.7'
+# Removed subprocess.CalledProcessError: Command '['/usr/local/bin/docker-credential-desktop', 'get']' returned non-zero exit status 1
+# I had this:
+# cat ~/.docker/config.json
+# {"auths":{},"credsStore":"", "credsStore":"desktop","stackOrchestrator":"swarm"}
+# I updated to this:
+# {"auths":{},"credsStore":"","stackOrchestrator":"swarm"}
+services:
+  currency-conversion-service:
+    image: aravinthkaliyamoorthy/currency-conversion-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8100"
+    restart: always
+    depends_on: # Start the depends_on first
+      - currency-exchange-service 
+    environment:
+      CURRENCY_EXCHANGE_URI: http://currency-exchange-service:8000
+    networks:
+      - web-application-network
+
+  currency-exchange-service:
+    image: aravinthkaliyamoorthy/currency-exchange-service:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8000"
+    restart: always
+    depends_on: # Start the depends_on first
+      - mysql 
+    environment:
+      RDS_HOSTNAME: mysql
+    networks:
+      - web-application-network
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: currency
+    volumes:
+      - mysql-database-data-volume:/var/lib/mysql
+    networks:
+      - web-application-network
+ 
+# Volumes
+volumes:
+  mysql-database-data-volume:
+
+networks:
+  web-application-network:
