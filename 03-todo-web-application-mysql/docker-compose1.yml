@@ -15,7 +15,7 @@ services:
       MYSQL_ROOT_PASSWORD: password 
       MYSQL_USER: root
       MYSQL_PASSWORD: password
-      MYSQL_DATABASE: todos
+      MYSQL_DATABASE: currency
     volumes:
       - mysql-database-data-volume:/var/lib/mysql
     networks:
